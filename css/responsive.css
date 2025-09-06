@@ -1,5 +1,28 @@
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .nav-icons {
+        gap: 5px;
+    }
+}
+
 @media (max-width: 992px) {
+    .navbar-brand {
+        order: 1;
+    }
+
+    .navbar-toggler {
+        order: 3;
+    }
+
+    .nav-icons {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .navbar-nav .nav-link {
+        padding-left: 0;
+    }
+
     .categories {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -19,9 +42,25 @@
 
     .filter-groups {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
     }
+}
+
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .price {
+        font-size: 1.5rem;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 1rem 3rem;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -38,7 +77,8 @@
     }
 
     .product-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+        font-weight: 700;
     }
 
     .price {
@@ -47,7 +87,7 @@
 
 
     nav ul {
-        gap: 1.5rem;
+        gap: 1.1rem;
     }
 
     .hero-content {
@@ -62,9 +102,6 @@
         font-size: 2.2rem;
     }
 
-    .filter-groups {
-        grid-template-columns: 1fr;
-    }
 
     /* .grid-options {
         flex-direction: column;
@@ -94,9 +131,6 @@
         padding: 0 1rem;
     }
 
-    .products {
-        grid-template-columns: 1fr;
-    }
 
     .newsletter-form {
         flex-direction: column;
@@ -107,6 +141,10 @@
     .newsletter-form button {
         width: 100%;
         padding: 1rem;
+    }
+
+    .product-img {
+        height: 330px;
     }
 }
 
@@ -133,5 +171,64 @@
 
     .price {
         font-size: 1.125rem;
+    }
+
+    .navbar-brand h1 {
+        display: none;
+    }
+
+    .collection-header {
+        padding: 24px 0px;
+        margin-bottom: 10px;
+    }
+
+    .collection-header h1 {
+        font-size: 42px;
+    }
+
+    .collection-header p {
+        font-size: 16px;
+
+    }
+}
+
+@media (max-width: 459px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width:420px) {
+    .collection-header {
+        padding: 24px 0px 10px;
+        margin-bottom: 10px;
+    }
+
+    .product-info {
+        text-align: center;
+    }
+}
+
+@media (max-width:385px) {
+    .view-options .btn {
+        padding: 0.5rem 0.3rem;
+    }
+}
+
+@media (max-width:375px) {
+    .product-img {
+        height: 300px;
+
+    }
+}
+
+@media (max-width:362px) {
+    .view-options .btn {
+        margin-top: 32px;
+    }
+
+    .sort-options select {
+        margin-top: 10px;
     }
 }

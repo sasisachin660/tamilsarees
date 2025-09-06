@@ -1,4 +1,4 @@
-:root {
+ :root {
     /* === Primary Brand Colors === */
     --primary: #7B1E1E;
     /* Royal Maroon – deeper & richer */
@@ -44,6 +44,7 @@
     --shadow-default: 0 2px 6px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 
 * {
     margin: 0;
@@ -153,11 +154,11 @@ a:hover {
     color: #ad1457;
 }
 
-.container {
+/* .container {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
-}
+} */
 
 header {
     background-color: var(--background);
@@ -174,59 +175,243 @@ header {
     align-items: center;
 }
 
-.logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
+/*==============================
+  LOGO & BRANDING
+===============================*/
+.navbar-brand {
     display: flex;
     align-items: center;
-    color: var(--primary);
-}
-
-.logo {
+    gap: 10px;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
+    text-decoration: none;
 }
 
-.logo span {
+.navbar-brand img {
+    height: 50px;
+    object-fit: contain;
+}
+
+.navbar-brand h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: var(--primary);
+}
+
+.navbar-brand h1 span {
     color: var(--accent);
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-}
-
-nav a {
+/*==============================
+  NAVIGATION LINKS
+===============================*/
+.navbar-nav .nav-link {
     color: var(--text);
-    text-decoration: none;
+    font-size: 1rem;
     font-weight: 500;
-    font-size: 1.1rem;
-    transition: color 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+    position: relative;
+    display: inline-block;
 }
 
-nav a:hover {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     color: var(--primary);
 }
 
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navbar-nav .nav-link:not(:hover)::after {
+    transform-origin: right;
+}
+
+/*==============================
+  DROPDOWN MENU
+===============================*/
+.navbar-nav .dropdown-menu {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .dropdown-item {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/*==============================
+  NAV ICONS
+  - Always visible
+===============================*/
 .nav-icons {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1.2rem;
+
 }
 
 .nav-icons a {
     color: var(--text);
-    transition: color 0.3s;
     font-size: 1.2rem;
+    transition: color 0.3s;
 }
 
 .nav-icons a:hover {
     color: var(--primary);
+}
+
+.nav-icons .nav-link {
+    padding: 8px;
+    position: relative;
+}
+
+.nav-icons .nav-link .wishcount span {
+    top: -6px;
+    left: 24px;
+}
+
+.nav-icons .nav-link .cartcount span {
+    top: -4px;
+    left: 24px;
+}
+
+.nav-icons .nav-link .wishcount span,
+.nav-icons .nav-link .cartcount span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    background-color: var(--primary);
+    text-align: center;
+}
+
+/*==============================
+ Basic Search Box Styling 
+===============================*/
+.search-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-input-wrapper .search-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #555;
+    padding: 0;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+/*==============================
+  TOGGLER ICON
+===============================*/
+.navbar-toggler {
+    border: none;
+    margin-top: 7px;
+}
+
+.navbar-toggler .fa-bars {
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+/*==============================
+  OFFCANVAS MENU
+===============================*/
+.offcanvas {
+    background-color: #fff;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #eee;
+}
+
+.offcanvas-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.offcanvas-body .navbar-nav .nav-item a {
+    text-decoration: none;
+}
+
+/*==============================
+  CONTAINER & HEADER WRAPPER
+===============================*/
+.menu-out .container {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.menu-out {
+    background-color: var(--background);
 }
 
 /* Hero Section */
@@ -308,10 +493,10 @@ nav a:hover {
 
 /* Collection Header */
 .collection-header {
-    padding: 3rem 0;
+    padding: 2rem 0;
     text-align: center;
     background: linear-gradient(to right, var(--hover-tint), rgba(201, 169, 75, 0.1));
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .collection-header h1 {
@@ -332,23 +517,24 @@ nav a:hover {
 }
 
 .filters {
-    width: 280px;
+    width: 100%;
     flex-shrink: 0;
 }
 
 .filter-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-bottom: 1px solid var(--accent);
     padding-bottom: 1.5rem;
 }
 
 .filter-group h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
 }
 
 .filter-options {
@@ -393,30 +579,106 @@ nav a:hover {
     border-color: var(--primary);
 }
 
-.price-range {
-    width: 100%;
-    height: 5px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: var(--gray-light);
-    outline: none;
-    border-radius: 5px;
-    margin: 1rem 0;
+/* Filter Container */
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 370px;
+    border-radius: 10px;
+    background: var(--background);
+    box-shadow: var(--shadow-hover);
+    padding: 20px;
+    padding-bottom: 35px;
+    padding-top: 35px;
 }
 
-.price-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--primary);
+/* Label styles with "from" and "to" */
+.filter__label {
+    position: relative;
     cursor: pointer;
 }
 
-.price-values {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
+.filter__label:nth-child(1)::before {
+    content: 'from';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.filter__label:nth-child(2)::before {
+    content: 'to';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Input field styling */
+.filter__input {
+    height: 35px;
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    padding: 0 10px 0 40px;
+    cursor: pointer;
+    max-width: 160px;
+    background: #fff;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.filter__input:focus {
+    background: rgba(123, 30, 30, 0.05);
+}
+
+/* noUiSlider custom styles */
+.noUi-target {
+    cursor: pointer;
+}
+
+.noUi-horizontal {
+    height: 9px !important;
+}
+
+.noUi-connect {
+    background: var(--accent) !important;
+}
+
+.noUi-base {
+    background: var(--background-alt);
+}
+
+.noUi-horizontal .noUi-handle {
+    top: -7px !important;
+    width: 20px !important;
+    height: 20px !important;
+    right: -12px !important;
+    background: var(--primary);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: unset;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.noUi-horizontal .noUi-handle:before,
+.noUi-horizontal .noUi-handle:after {
+    content: none;
+}
+
+.noUi-horizontal .noUi-handle:hover {
+    transform: scale(1.1);
+}
+
+/* Slider container */
+.filter__slider-price {
+    width: 100%;
+    margin: 35px 5px 0;
 }
 
 .products-grid {
@@ -444,6 +706,26 @@ nav a:hover {
     gap: 0.5rem;
 }
 
+.view-options .btn {
+    padding: 0.5rem 1.3rem;
+    border: 1px solid var(--accent);
+    background-color: var(--background);
+    color: var(--text);
+    outline: none;
+    transition: all 360ms ease;
+}
+
+.view-options .btn:active,
+.view-options .btn:focus,
+.view-options .btn:hover {
+    box-shadow: none;
+    border: 2.5px solid var(--accent);
+    transform: none !important;
+    background-color: var(--sale);
+    color: #fff;
+    transition: all 360ms ease;
+}
+
 .view-option {
     width: 36px;
     height: 36px;
@@ -452,7 +734,7 @@ nav a:hover {
     justify-content: center;
     border: 1px solid var(--accent);
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 360ms ease;
 }
 
 .view-option.active {
@@ -463,34 +745,31 @@ nav a:hover {
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 1rem 3rem;
 }
 
 .product-card {
-    background-color: var(--background);
     position: relative;
-    transition: transform 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
+    transition: transform 360ms ease;
 }
 
 .product-img {
-    height: 350px;
+    height: 300px;
     overflow: hidden;
     position: relative;
+    border-radius: 25px;
 }
 
 .product-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    transition: transform 350ms ease-out;
 }
 
 .product-card:hover .product-img img {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(2deg);
+
 }
 
 .product-actions {
@@ -528,20 +807,25 @@ nav a:hover {
 }
 
 .product-info {
-    padding: 1.5rem 0;
-    text-align: center;
+    padding: 1rem 0px 0px 0px;
 }
+
+.product-info a {
+    text-decoration: none;
+}
+
+
 
 .product-title {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    color: var(--primary);
+    color: var(--saffron);
 }
 
 .product-price {
-    color: var(--sale);
+    color: var(--royal-blue);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -680,14 +964,11 @@ nav a:hover {
 footer {
     background-color: var(--primary);
     color: var(--background);
-    padding: 5rem 0 2rem;
+    padding: 3rem 0 1rem;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+.fot_sec {
+    margin-bottom: 30px;
 }
 
 .footer-section h3 {
@@ -702,6 +983,7 @@ footer {
 
 .footer-section ul {
     list-style: none;
+    padding-left: 1rem;
 }
 
 .footer-section li {
@@ -716,6 +998,10 @@ footer {
 
 .footer-section a:hover {
     color: var(--accent);
+}
+
+.footer-section p a span {
+    margin-left: 10px;
 }
 
 .social-icons {
@@ -743,4 +1029,8 @@ footer {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* about page */
+.about_section{
+ padding: 30px 0px;
 }
